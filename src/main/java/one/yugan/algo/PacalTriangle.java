@@ -1,4 +1,4 @@
-package one.yugan;
+package one.yugan.algo;
 
 import java.util.HashMap;
 import java.util.Map;

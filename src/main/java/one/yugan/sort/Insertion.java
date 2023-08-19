@@ -1,4 +1,6 @@
-package one.yugan;
+package one.yugan.sort;
+
+import one.yugan.DataStructuresCollect;
 
 /**
  * @author : yugan.
