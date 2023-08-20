@@ -22,7 +22,7 @@ public abstract class DataStructuresCollect {
       INT_ARRAY_COLLECT.add(new int[] {-1});
       INT_ARRAY_COLLECT.add(new int[] {0});
       INT_ARRAY_COLLECT.add(new int[] {1});
-      INT_ARRAY_COLLECT.add(new int[] {1, 2, 3, 4, 5, 6});
+      INT_ARRAY_COLLECT.add(new int[] {1, 1, 2, 2, 3, 3,4,4,5,5,5,5});
       INT_ARRAY_COLLECT.add(new int[] {6, 5, 4, 3, 2, 1});
       INT_ARRAY_COLLECT.add(new int[] {3, -5, 11, 57, -10, 36, 89, 7645});
       INT_ARRAY_COLLECT.add(new int[] {9, 10, 9, 10, 9, 10, 9});
