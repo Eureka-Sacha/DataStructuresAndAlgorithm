@@ -8,6 +8,9 @@ import java.util.Random;
 import java.util.function.Consumer;
 import java.util.random.RandomGenerator;
 
+import one.yugan.structs.ListNode;
+import one.yugan.structs.RandomListNode;
+
 /**
  * @author : yugan.
  * @date : 2023/8/19
@@ -28,6 +31,34 @@ public abstract class DataStructuresCollect {
       INT_ARRAY_COLLECT.add(new int[] {9, 10, 9, 10, 9, 10, 9});
       INT_ARRAY_COLLECT.add(buildRandomBigArray(1000));
       INT_ARRAY_COLLECT.add(buildRandomBigArray(Integer.MAX_VALUE >> 17));
+   }
+
+   public static void printListNode(ListNode head) {
+      if (head == null) {
+         System.out.println("null");
+      }
+      while (head != null) {
+         System.out.printf("%s", head.val);
+         head = head.next;
+         if (head != null) {
+            System.out.print("->");
+         }
+      }
+      System.out.println();
+   }
+
+   public static void printRandomListNode(RandomListNode head) {
+      if (head == null) {
+         System.out.println("null");
+      }
+      while (head != null) {
+         System.out.printf("%s(%s)", head.val, head.random==null?null:head.random.val);
+         head = head.next;
+         if (head != null) {
+            System.out.print("->");
+         }
+      }
+      System.out.println();
    }
 
    public static int[] buildRandomBigArray(int size) {
