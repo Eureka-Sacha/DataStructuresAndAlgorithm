@@ -7,7 +7,7 @@ import one.yugan.DataStructuresCollect;
  * @date : 2023/8/19
  * @email : eureka_sacha@outlook.com
  */
-public class Bubble {
+public class Bubble{
 
     public static void sort(int[] source) {
         bubbleSort(source, source.length - 1);
