@@ -34,51 +34,46 @@ public class CanCompleteCircuit {
      * 开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。
      * 因此，3 可为起始索引。
      */
-    public static int canCompleteCircuit(int[] nums, int[] cost) {
-        if (nums == null || nums.length == 0) {
+    public static int canCompleteCircuit(int[] gas, int[] cost) {
+        if (gas == null || gas.length == 0) {
             return -1;
         }
         if (cost == null || cost.length == 0) {
             return -1;
         }
-        if (nums.length != cost.length) {
+        if (gas.length != cost.length) {
             return -1;
         }
         //总油量如果小于耗油量,一定不会有结果.
-        if (Arrays.stream(nums).sum() < Arrays.stream(cost).sum()) {
+        if (Arrays.stream(gas).sum() < Arrays.stream(cost).sum()) {
             return -1;
         }
-        int index = -1;
-        for (int i = 0; i < nums.length; i++) {
-            if (remainGas(nums, cost, i)) {
-                //如果要求只能有一个结果, 那就在这里判断
-                if (index != -1) {
-                    return -1;
+        int n = gas.length;
+        int i = 0;
+
+        // 从头到尾遍历每个加油站，并且检查以该加油站为起点，能否行驶一周
+        while(i < n){
+            int sumOfGas  = 0; // 总共加的油
+            int SumOfCost = 0; // 总共消费的油
+            int count = 0;     // 记录能走过几个站点
+            while(count < n){  // 退出循环的条件是走过所有的站点
+                int j = (i + count) % n; // 加油站是环形的
+                sumOfGas += gas[j];
+                SumOfCost += cost[j];
+                if(SumOfCost > sumOfGas){ // 如果这个站点发现油不够了
+                    break;
                 }
-                index = i;
+                count++; // 这个站点满足情况
             }
 
+            if(count == n){  // 如果能环绕一圈
+                return i;
+            }else{ // 不行的话 从下一个站点开始 检查
+                i = i + count + 1;
+            }
         }
-        return index;
+        // 所有加油站作为起点都不满足
+        return -1;
     }
 
-    public static boolean remainGas(int[] gas, int[] cost, int pos) {
-        int remain = gas[pos] - cost[pos];
-        if (remain < 0) {
-            return false;
-        }
-        int start = pos + 1;
-        while (start != pos) {
-            if (start >= gas.length ) {
-                start = 0;
-            }
-            remain += gas[start];
-            remain -= cost[start];
-            if (remain < 0) {
-                return false;
-            }
-            start++;
-        }
-        return true;
-    }
 }
